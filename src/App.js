@@ -1,11 +1,12 @@
 import React from 'react'
 import { makeStyles } from '@mui/styles'
-import { purple } from '@mui/material/colors'
+import { deepPurple } from '@mui/material/colors'
 
 
 const useStyles = makeStyles(theme => ({
   app: {
-    backgroundImage: `linear-gradient(95deg, ${purple[500]} 0%, ${purple[200]} 100%)`
+    backgroundImage: `linear-gradient(15deg, ${deepPurple[900]} 0%, ${deepPurple[200]} 100%)`,
+    height: '100vh'
   }
 }))
 
