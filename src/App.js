@@ -1,7 +1,6 @@
 import React from 'react'
 import { makeStyles } from '@mui/styles'
 import { deepPurple } from '@mui/material/colors'
-import WeatherCard from 'components/WeatherCard'
 import CardContainer from 'components/CardContainer'
 
 
