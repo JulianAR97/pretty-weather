@@ -10,7 +10,8 @@ const useStyles = makeStyles(theme => ({
     padding: '20px',
     width: 300,
     textAlign: 'center',
-    borderRadius: '20px !important'
+    borderRadius: '20px !important',
+    margin: '0px 20px'
   },
   descriptors: {
     textTransform: 'uppercase',
