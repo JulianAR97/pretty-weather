@@ -2,7 +2,7 @@ import React from 'react'
 import { makeStyles } from '@mui/styles'
 import { deepPurple } from '@mui/material/colors'
 import CardContainer from 'components/CardContainer'
-
+import StyledSwitch from 'components/StyledSwitch'
 
 const useStyles = makeStyles(theme => ({
   app: {
@@ -19,6 +19,7 @@ const App = () => {
   
   return (
     <div className={classes.app}>
+      <StyledSwitch />
       <CardContainer />
     </div>
   )
