@@ -7,7 +7,8 @@ const initialState = {
       temp:5,
       description: "partly cloudy",
     }
-  ]
+  ], 
+  tempUnit: 'f'
 }
 
 const appReducer = (state = initialState, action) => {
@@ -15,6 +16,9 @@ const appReducer = (state = initialState, action) => {
     
     case 'SET_CITIES': 
       return ({...state, cities: action.payload.cities})
+
+    case 'SET_TEMP_UNIT':
+      return ({...state, tempUnit: action.payload.tempUnit })
     
     default:
       return state
