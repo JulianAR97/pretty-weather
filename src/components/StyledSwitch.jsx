@@ -19,7 +19,6 @@ const StyledSwitch = styled((props) => (
     '&.Mui-checked': {
       transform: 'translateX(20px)',
       color: '#fff',
-      backgroundImage: 'url(https://pngimg.com/uploads/letter_f/letter_f_PNG2.png)',
       '& + .MuiSwitch-track': {
         backgroundColor: deepPurple[500],
         opacity: 1,
