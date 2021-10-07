@@ -6,6 +6,7 @@ import { ArrowForward, ArrowBack } from '@mui/icons-material'
 import Sunny from '../weatherIcons/sunny.png'
 import PartlyCloudy from '../weatherIcons/partly_cloudy.png'
 import { connect } from 'react-redux'
+import { convertTemp } from 'helpers.js';
 
 const useStyles = makeStyles(theme => ({
   arrow: {
@@ -14,6 +15,7 @@ const useStyles = makeStyles(theme => ({
   container: {
     width: '100%',
     display: 'flex',
+    flex: 1,
     alignItems: 'center',
     justifyContent: 'center'
   },
@@ -30,7 +32,7 @@ const CardContainer = (props) => {
   const classes = useStyles()
   
   // variable declarations
-  const { cities } = props
+  const { cities, tempUnit } = props
 
   // State
   const [page, setPage] = useState(0)
@@ -46,6 +48,8 @@ const CardContainer = (props) => {
   
   
   // Use Effects
+
+  // TODO: Make cities horizontally scrollable
   // when page, cities, or citiesPerPage changes, we set the new cities for that page
   useEffect(() => {
     let startIndex = page * citiesPerPage
@@ -64,17 +68,25 @@ const CardContainer = (props) => {
   
   // Functions
   const renderCards = (cities) => {
-    return cities.map((city, index) => (
-      <WeatherCard
-        key={index}
-        city={city.city}
-        hi={city.hi}
-        lo={city.lo}
-        temp={city.temp}
-        description={city.description}
-        icon={city.description === 'sunny' ? Sunny : PartlyCloudy}
-      />
-    ))
+    return cities.map((c, index) => {
+      
+      let {hi, lo, temp, description, city} = c
+      
+      // temp defaults as celsius
+      if (tempUnit === 'f')
+        [hi, lo, temp] = [convertTemp(hi, "c"), convertTemp(lo, "c"), convertTemp(temp, "c")]
+      
+      return (
+        <WeatherCard
+          key={index}
+          city={city}
+          hi={hi}
+          lo={lo}
+          temp={temp}
+          description={description}
+          icon={description === 'sunny' ? Sunny : PartlyCloudy}
+        />
+      )})
   }
 
   return (
@@ -123,7 +135,8 @@ const mapStateToProps = (state) => ({
       description: "sunny"
     },
     ...state.cities
-  ]
+  ],
+  tempUnit: state.tempUnit
 })
 
 export default connect(mapStateToProps, null)(CardContainer)
