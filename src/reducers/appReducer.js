@@ -8,7 +8,7 @@ const initialState = {
       description: "partly cloudy",
     }
   ], 
-  tempUnit: 'f'
+  tempUnit: 'c'
 }
 
 const appReducer = (state = initialState, action) => {
